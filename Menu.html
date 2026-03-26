@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Burger Shack</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: #121212;
+    color: white;
+}
+
+/* HEADER */
+header {
+    background: #e67e22;
+    text-align: center;
+    padding: 30px;
+}
+h1 {
+    font-family: 'Bebas Neue';
+    font-size: 3rem;
+}
+.tagline { font-style: italic; }
+
+/* SECTIONS */
+.section {
+    padding: 40px 20px;
+}
+h2 {
+    color: #e67e22;
+    font-family: 'Bebas Neue';
+}
+
+/* SLIDER */
+.slider {
+    position: relative;
+    overflow: hidden;
+}
+.slider-track {
+    display: flex;
+    transition: 0.5s;
+}
+.card {
+    min-width: 250px;
+    margin: 10px;
+    background: #1e1e1e;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+}
+.card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+.card h3 { margin: 10px 0 0; }
+.card p { margin: 5px; color: #bbb; }
+.price {
+    color: #e67e22;
+    font-weight: bold;
+}
+.card button {
+    background: #e67e22;
+    border: none;
+    padding: 10px;
+    margin: 10px;
+    cursor: pointer;
+    color: white;
+    border-radius: 5px;
+}
+
+/* BOTONES SLIDER */
+.btn {
+    position: absolute;
+    top: 40%;
+    background: rgba(255,255,255,0.3);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+.prev { left: 0; }
+.next { right: 0; }
+
+/* CART */
+.cart {
+    position: fixed;
+    right: 10px;
+    top: 100px;
+    width: 260px;
+    background: #222;
+    padding: 15px;
+    border-radius: 10px;
+}
+.cart h3 { color: #e67e22; }
+.cart ul { padding: 0; list-style: none; }
+.cart button {
+    width: 100%;
+    background: #e67e22;
+    border: none;
+    padding: 10px;
+    margin-top: 10px;
+    color: white;
+    cursor: pointer;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #aaa;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>THE BURGER SHACK</h1>
+<p class="tagline">The best burgers in town</p>
+</header>
+
+<!-- 🍔 BURGERS -->
+<section class="section">
+<h2>Burgers</h2>
+<div class="slider">
+<div class="slider-track" id="burgerTrack">
+
+<div class="card">
+<img src="https://source.unsplash.com/300x200/?burger">
+<h3>OG Cheese</h3>
+<p>Classic cheeseburger</p>
+<p class="price">$12</p>
+<button onclick="addToCart('OG Cheese',12)">Add</button>
+</div>
+
+<div class="card">
+<img src="https://source.unsplash.com/300x200/?bacon-burger">
+<h3>Bacon Beast</h3>
+<p>Bacon + BBQ</p>
+<p class="price">$15</p>
+<button onclick="addToCart('Bacon Beast',15)">Add</button>
+</div>
+
+<div class="card">
+<img src="https://source.unsplash.com/300x200/?veggie-burger">
+<h3>Veggie</h3>
+<p>Plant based</p>
+<p class="price">$11</p>
+<button onclick="addToCart('Veggie',11)">Add</button>
+</div>
+
+</div>
+<button class="btn prev" onclick="move('burgerTrack',-1)">◀</button>
+<button class="btn next" onclick="move('burgerTrack',1)">▶</button>
+</div>
+</section>
+
+<!-- 🥤 DRINKS -->
+<section class="section">
+<h2>Drinks</h2>
+<div class="slider">
+<div class="slider-track" id="drinkTrack">
+
+<div class="card">
+<img src="https://source.unsplash.com/300x200/?milkshake">
+<h3>Milkshake</h3>
+<p>Chocolate/Vanilla</p>
+<p class="price">$7</p>
+<button onclick="addToCart('Milkshake',7)">Add</button>
+</div>
+
+<div class="card">
+<img src="https://source.unsplash.com/300x200/?soda">
+<h3>Soda</h3>
+<p>Any flavor</p>
+<p class="price">$3</p>
+<button onclick="addToCart('Soda',3)">Add</button>
+</div>
+
+</div>
+<button class="btn prev" onclick="move('drinkTrack',-1)">◀</button>
+<button class="btn next" onclick="move('drinkTrack',1)">▶</button>
+</div>
+</section>
+
+<!-- 🍟 SIDES -->
+<section class="section">
+<h2>Sides</h2>
+<div class="slider">
+<div class="slider-track" id="sideTrack">
+
+<div class="card">
+<img src="https://source.unsplash.com/300x200/?fries">
+<h3>Fries</h3>
+<p>Golden crispy</p>
+<p class="price">$6</p>
+<button onclick="addToCart('Fries',6)">Add</button>
+</div>
+
+</div>
+<button class="btn prev" onclick="move('sideTrack',-1)">◀</button>
+<button class="btn next" onclick="move('sideTrack',1)">▶</button>
+</div>
+</section>
+
+<!-- 🛒 CART -->
+<div class="cart">
+<h3>Order</h3>
+<ul id="cartItems"></ul>
+<p>Total: $<span id="total">0</span></p>
+
+<input id="waiter" placeholder="Waiter name">
+
+<button onclick="printReceipt()">Print Receipt</button>
+</div>
+
+<footer>
+<p>Open daily 12:00 PM - 11:00 PM</p>
+</footer>
+
+<script>
+// SLIDER
+let positions = {};
+
+function move(trackId, direction){
+    if(!positions[trackId]) positions[trackId]=0;
+    positions[trackId]+=direction;
+
+    const track = document.getElementById(trackId);
+    const cards = track.children.length;
+
+    if(positions[trackId] < 0) positions[trackId]=0;
+    if(positions[trackId] > cards-1) positions[trackId]=cards-1;
+
+    track.style.transform = `translateX(${-positions[trackId]*260}px)`;
+}
+
+// CART
+let cart = [];
+
+function addToCart(name, price){
+    cart.push({name, price});
+    updateCart();
+}
+
+function updateCart(){
+    const list = document.getElementById("cartItems");
+    let total = 0;
+    list.innerHTML = "";
+
+    cart.forEach(item=>{
+        let li = document.createElement("li");
+        li.textContent = `${item.name} - $${item.price}`;
+        list.appendChild(li);
+        total += item.price;
+    });
+
+    document.getElementById("total").textContent = total;
+}
+
+// RECEIPT
+function printReceipt(){
+    let waiter = document.getElementById("waiter").value || "Unknown";
+    let date = new Date();
+
+    let text = `
+THE BURGER SHACK
+----------------------
+Date: ${date.toLocaleDateString()}
+Time: ${date.toLocaleTimeString()}
+Waiter: ${waiter}
+
+`;
+
+    let total = 0;
+
+    cart.forEach(item=>{
+        text += `${item.name} - $${item.price}\n`;
+        total += item.price;
+    });
+
+    text += `
+----------------------
+TOTAL: $${total}
+`;
+
+    alert(text);
+}
+</script>
+
+</body>
+</html>
