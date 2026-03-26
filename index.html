@@ -113,6 +113,16 @@ h2 {
 .card:hover {
     transform: scale(1.05);
 }
+.slider-track {
+    display: flex;
+    transition: 0.5s;
+    justify-content: flex-start; /* base */
+}
+
+.slider.center {
+    display: flex;
+    justify-content: center;
+}
 
 /* FOOTER */
 footer {
@@ -235,15 +245,20 @@ let positions = {};
 
 function move(trackId, direction){
     if(!positions[trackId]) positions[trackId]=0;
-    positions[trackId]+=direction;
 
     const track = document.getElementById(trackId);
-    const cards = track.children.length;
+    const total = track.children.length;
+    const maxVisible = 4;
+
+    const maxMove = Math.max(0, total - maxVisible);
+
+    positions[trackId] += direction;
 
     if(positions[trackId] < 0) positions[trackId]=0;
-    if(positions[trackId] > cards-1) positions[trackId]=cards-1;
+    if(positions[trackId] > maxMove) positions[trackId]=maxMove;
 
-    track.style.transform = `translateX(${-positions[trackId]*360}px)`;
+    const cardWidth = 260; // mismo valor
+    track.style.transform = `translateX(${-positions[trackId]*cardWidth}px)`;
 }
 
 // CART
@@ -268,6 +283,31 @@ function updateCart(){
 
     document.getElementById("total").textContent = total;
 }
+
+function setupSlider(trackId) {
+    const track = document.getElementById(trackId);
+    const slider = track.parentElement;
+    const cards = track.children;
+    const total = cards.length;
+
+    let visible = Math.min(total, 4); // máximo 4 visibles
+
+    // ancho dinámico
+    const cardWidth = 360; // ajusta si cambiaste tamaño
+    track.style.width = (cardWidth * total) + "px";
+
+    // centrar si hay menos de 4
+    if (total < 4) {
+        slider.classList.add("center");
+    } else {
+        slider.classList.remove("center");
+    }
+}
+
+setupSlider("burgerTrack");
+setupSlider("drinkTrack");
+setupSlider("sideTrack");
+
 
 // RECEIPT
 function printReceipt(){
