@@ -286,6 +286,7 @@ footer {
 <div class="content">
 <h3>Soda</h3>
 <p>Coca-cola® original</p>
+<p>Sprite® original</p>
 <p class="price">$3</p>
 </div>
 
@@ -361,7 +362,62 @@ footer {
 <button class="btn prev" onclick="move('sideTrack',-1)">◀</button>
 <button class="btn next" onclick="move('sideTrack',1)">▶</button>
 </div>
+
+
+<!-- DESSERTS -->
+<section class="section">
+<h2>Sides</h2>
+<div class="slider">
+<div class="slider-track" id="sideTrack">
+
+<div class="card">
+<img src="img/apple.jpg">
+
+<div class="content">
+<h3>Apple pie</h3>
+<p>A delicious fresh apple pie to enjoy.</p>
+<p>Tired of the boring cheese pie? Try this one out</p>
+<p class="price">$5</p>
+</div>
+
+<button onclick="addToCart('Apple pie',5)">Add</button>
+</div>
+
+<div class="card">
+<img src="img/brownie.jpg">
+
+<div class="content">
+<h3>Brownies & Ice cream</h3>
+<p>An exquisite bowl of brownies with ice cream on top.</p>
+<p>Not suitable for diabetics' persons.</p>
+<p class="price">$6.50</p>    
+</div>
+
+<button onclick="addToCart('Brownies Ice cream',6.50)">Add</button>
+</div>
+
+</div>
+
+<div class="card">
+<img src="img/choco.jpg">
+
+<div class="content">
+<h3>Chocolate chip cookies</h3>
+<p>A classical plate of chocolate chip cookies.</p>
+<p>The most popular for a chill evening.</p>
+<p class="price">$4</p>    
+</div>
+
+<button onclick="addToCart('Choco-Chip Cookies',4)">Add</button>
+</div>
+
+</div>
+<button class="btn prev" onclick="move('sideTrack',-1)">◀</button>
+<button class="btn next" onclick="move('sideTrack',1)">▶</button>
+</div>
+
 </section>
+
 
 <!-- 🛒 CART -->
 <div class="cart">
