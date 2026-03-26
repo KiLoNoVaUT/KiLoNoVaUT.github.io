@@ -367,55 +367,50 @@ footer {
 <!-- DESSERTS -->
 <section class="section">
 <h2>Desserts</h2>
+
 <div class="slider">
-<div class="slider-track" id="sideTrack">
+<div class="slider-track" id="dessertTrack"> <!-- 👈 cambia ID también -->
 
 <div class="card">
 <img src="img/apple.jpg">
-
 <div class="content">
 <h3>Apple pie</h3>
 <p>A delicious fresh apple pie to enjoy.</p>
 <p>Tired of the boring cheese pie? Try this one out</p>
 <p class="price">$5</p>
 </div>
-
 <button onclick="addToCart('Apple pie',5)">Add</button>
 </div>
 
 <div class="card">
 <img src="img/brownie.jpg">
-
 <div class="content">
 <h3>Brownies & Ice cream</h3>
 <p>An exquisite bowl of brownies with ice cream on top.</p>
 <p>Not suitable for diabetics' persons.</p>
-<p class="price">$6.50</p>    
+<p class="price">$6.50</p>
 </div>
-
 <button onclick="addToCart('Brownies Ice cream',6.50)">Add</button>
 </div>
 
-</div>
-
+<!-- 🔥 ESTA CARD VA AQUÍ ADENTRO -->
 <div class="card">
 <img src="img/choco.jpg">
-
 <div class="content">
 <h3>Chocolate chip cookies</h3>
 <p>A classical bowl of home-made chocolate chip cookies.</p>
 <p>The most popular for a chill evening.</p>
-<p class="price">$4</p>    
+<p class="price">$4</p>
 </div>
-
 <button onclick="addToCart('Choco-Chip Cookies',4)">Add</button>
 </div>
 
-</div>
-<button class="btn prev" onclick="move('sideTrack',-1)">◀</button>
-<button class="btn next" onclick="move('sideTrack',1)">▶</button>
-</div>
+</div> <!-- cierre correcto del track -->
 
+<button class="btn prev" onclick="move('dessertTrack',-1)">◀</button>
+<button class="btn next" onclick="move('dessertTrack',1)">▶</button>
+
+</div>
 </section>
 
 
@@ -507,6 +502,7 @@ function setupSlider(trackId) {
 setupSlider("burgerTrack");
 setupSlider("drinkTrack");
 setupSlider("sideTrack");
+setupSlider("dessertTrack");
 
 
 // RECEIPT
