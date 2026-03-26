@@ -46,7 +46,7 @@ h2 {
     transition: 0.5s;
 }
 .card {
-    min-width: 250px;
+    min-width: 350px;
     margin: 10px;
     background: #1e1e1e;
     border-radius: 10px;
@@ -55,7 +55,7 @@ h2 {
 }
 .card img {
     width: 100%;
-    height: 150px;
+    height: 190px;
     object-fit: cover;
 }
 .card h3 { margin: 10px 0 0; }
@@ -90,8 +90,8 @@ h2 {
 .cart {
     position: fixed;
     right: 10px;
-    top: 100px;
-    width: 260px;
+    top: -100px;
+    width: 150px;
     background: #222;
     padding: 15px;
     border-radius: 10px;
@@ -243,7 +243,7 @@ function move(trackId, direction){
     if(positions[trackId] < 0) positions[trackId]=0;
     if(positions[trackId] > cards-1) positions[trackId]=cards-1;
 
-    track.style.transform = `translateX(${-positions[trackId]*260}px)`;
+    track.style.transform = `translateX(${-positions[trackId]*360}px)`;
 }
 
 // CART
