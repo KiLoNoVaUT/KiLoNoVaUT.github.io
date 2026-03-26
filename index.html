@@ -567,6 +567,13 @@ document.addEventListener("mousemove", e => {
         trail.remove();
     }, 500);
 });
+document.addEventListener("mousedown", () => {
+    cursor.style.transform = "translate(-50%, -50%) scale(0.8)";
+});
+
+document.addEventListener("mouseup", () => {
+    cursor.style.transform = "translate(-50%, -50%) scale(1)";
+});
 
 
 // RECEIPT
