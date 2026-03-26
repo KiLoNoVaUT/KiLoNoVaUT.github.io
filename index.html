@@ -24,12 +24,23 @@ body::before {
     width: 100%;
     height: 100%;
 
-    background: 
-        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-        url("img/restaurant.jpg") center/cover no-repeat;
+    background: url("img/restaurant.jpg") center/cover no-repeat;
 
-    filter: blur(6px);
+    filter: blur(8px);   /* 🔥 solo la imagen */
     transform: scale(1.1);
+
+    z-index: -2;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0,0,0,0.7); /* 🔥 negro sólido encima */
 
     z-index: -1;
 }
