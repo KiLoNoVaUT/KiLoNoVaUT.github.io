@@ -54,9 +54,9 @@ h2 {
     justify-content: center;
 }
 
-.card {
-    min-width: 350px;
-    height: 420px; /* 🔥 altura fija */
+  .card {
+    min-width: 280px; /* 🔥 más pequeñas */
+    height: 380px;    /* ajusta proporcional */
     margin: 10px;
     background: #1e1e1e;
     border-radius: 10px;
@@ -68,13 +68,13 @@ h2 {
     justify-content: space-between;
 }
 .content {
-    padding: 10px 15px; /* 🔥 margen interno */
+    padding: 10px 15px;
+    font-size: 0.9rem; /* opcional, más compacto */
 }
 .card img {
     width: 100%;
-    height: 190px;
-   object-fit: contain; /* 🔥 muestra toda la imagen */
-    background: #000; /* opcional, relleno bonito */
+    height: 160px; /* 🔽 más chica */
+    object-fit: cover; /* o contain si prefieres */
 }
 .card h3 { margin: 10px 0 0; }
 .card p { margin: 5px; color: #bbb; }
@@ -292,7 +292,7 @@ function move(trackId, direction){
     if(positions[trackId] < 0) positions[trackId]=0;
     if(positions[trackId] > maxMove) positions[trackId]=maxMove;
 
-    const cardWidth = 370; // mismo valor
+    const cardWidth = 300; // mismo valor
     track.style.transform = `translateX(${-positions[trackId]*cardWidth}px)`;
 }
 
