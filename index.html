@@ -14,7 +14,6 @@ body {
     background: #121212;
     color: white;
 }
-
 /* HEADER */
 header {
     background: #e67f22;
@@ -57,11 +56,19 @@ h2 {
 
 .card {
     min-width: 350px;
+    height: 420px; /* 🔥 altura fija */
     margin: 10px;
     background: #1e1e1e;
     border-radius: 10px;
     overflow: hidden;
     text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.content {
+    padding: 10px 15px; /* 🔥 margen interno */
 }
 .card img {
     width: 100%;
@@ -162,15 +169,19 @@ footer {
 <div class="slider-track" id="burgerTrack">
 
 <div class="card">
-<img src="img /classic.jpg">
-<h3>Classic cheese Burger</h3>
-<p>The original classic double cheese burger</p>
-<p class="price">$8</p>
-<button onclick="addToCart('Classic Cheese B',8)">Add</button>
+  <img src="img/classic.jpg">
+  
+  <div class="content">
+    <h3>Classic cheese Burger</h3>
+    <p>The original classic double cheese burger</p>
+    <p class="price">$8</p>
+  </div>
+
+  <button onclick="addToCart('Classic Cheese B',8)">Add</button>
 </div>
 
 <div class="card">
-<img src="img /baconcheeseburguer.jpg">
+<img src="img/baconcheeseburguer.jpg">
 <h3>Bacon Beast</h3>
 <p>A burger with Bacon + BBQ sauce and a patty. It is made by the beast itself for the real BEASTS.</p>
 <p class="price">$11</p>
@@ -178,7 +189,7 @@ footer {
 </div>
 
 <div class="card">
-<img src="img /doublebeef.jpg">
+<img src="img/doublebeef.jpg">
 <h3>Double-Beef Burger</h3>
 <p>A wild double-beef burger with all the veggies you may wish in a burger. Excellent for the wild ones.</p>
 <p class="price">$10</p>
@@ -186,7 +197,7 @@ footer {
 </div>
 
 <div class="card">
-<img src="img /KFCB.jpg">
+<img src="img/KFCB.jpg">
 <h3>Fried Chicken Burger</h3>
 <p>A crispy Fried Chicken between veggies and a patty. The best for the chicken lovers</p>
 <p class="price">$13</p>
@@ -280,7 +291,7 @@ function move(trackId, direction){
     if(positions[trackId] < 0) positions[trackId]=0;
     if(positions[trackId] > maxMove) positions[trackId]=maxMove;
 
-    const cardWidth = 260; // mismo valor
+    const cardWidth = 370; // mismo valor
     track.style.transform = `translateX(${-positions[trackId]*cardWidth}px)`;
 }
 
