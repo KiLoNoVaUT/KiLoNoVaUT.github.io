@@ -90,8 +90,8 @@ h2 {
 .cart {
     position: fixed;
     right: 10px;
-    top: -100px;
-    width: 150px;
+    top: 200px;
+    width: 200px;
     background: #222;
     padding: 15px;
     border-radius: 10px;
@@ -122,6 +122,11 @@ h2 {
 .slider.center {
     display: flex;
     justify-content: center;
+}
+
+.slider.center .slider-track {
+    justify-content: center;
+    width: 100% !important;
 }
 
 /* FOOTER */
@@ -293,7 +298,7 @@ function setupSlider(trackId) {
     let visible = Math.min(total, 4); // máximo 4 visibles
 
     // ancho dinámico
-    const cardWidth = 360; // ajusta si cambiaste tamaño
+    const cardWidth = 370; // ajusta si cambiaste tamaño
     track.style.width = (cardWidth * total) + "px";
 
     // centrar si hay menos de 4
