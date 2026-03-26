@@ -46,6 +46,15 @@ h2 {
     display: flex;
     transition: 0.5s;
 }
+.slider.center {
+    display: flex;
+    justify-content: center;
+}
+
+.slider.center .slider-track {
+    justify-content: center;
+}
+
 .card {
     min-width: 350px;
     margin: 10px;
@@ -293,31 +302,25 @@ function updateCart(){
 function setupSlider(trackId) {
     const track = document.getElementById(trackId);
     const slider = track.parentElement;
-    const cards = track.children;
-    const total = cards.length;
+    const total = track.children.length;
 
-    let visible = Math.min(total, 4); // máximo 4 visibles
-
-    // ancho dinámico
-    const cardWidth = 370; // ajusta si cambiaste tamaño
-    track.style.width = (cardWidth * total) + "px";
-
-    // centrar si hay menos de 4
     if (total < 4) {
         slider.classList.add("center");
+        track.style.transform = "translateX(0px)";
     } else {
         slider.classList.remove("center");
     }
-const prev = slider.querySelector(".prev");
-const next = slider.querySelector(".next");
 
-if (total <= 4) {
-    prev.style.display = "none";
-    next.style.display = "none";
-} else {
-    prev.style.display = "block";
-    next.style.display = "block";
-}
+    const prev = slider.querySelector(".prev");
+    const next = slider.querySelector(".next");
+
+    if (total <= 4) {
+        prev.style.display = "none";
+        next.style.display = "none";
+    } else {
+        prev.style.display = "block";
+        next.style.display = "block";
+    }
 }
 
 
