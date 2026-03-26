@@ -34,7 +34,7 @@ h1 {
 h2 {
     color: #e67e22;
     font-family: 'Bebas Neue';
-    margin-left: 350px;
+    margin-left: 500px;
 }
 
 /* SLIDER */
@@ -308,6 +308,17 @@ function setupSlider(trackId) {
     } else {
         slider.classList.remove("center");
     }
+}
+
+const prev = slider.querySelector(".prev");
+const next = slider.querySelector(".next");
+
+if (total <= 4) {
+    prev.style.display = "none";
+    next.style.display = "none";
+} else {
+    prev.style.display = "block";
+    next.style.display = "block";
 }
 
 setupSlider("burgerTrack");
