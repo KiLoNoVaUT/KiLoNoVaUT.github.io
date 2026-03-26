@@ -498,7 +498,14 @@ function move(trackId, direction){
 let cart = [];
 
 function addToCart(name, price){
-    cart.push({name, price});
+    const existing = cart.find(item => item.name === name);
+
+    if(existing){
+        existing.quantity += 1;
+    } else {
+        cart.push({name, price, quantity: 1});
+    }
+
     updateCart();
 }
 
@@ -507,11 +514,15 @@ function updateCart(){
     let total = 0;
     list.innerHTML = "";
 
-    cart.forEach(item=>{
+    cart.forEach(item => {
         let li = document.createElement("li");
-        li.textContent = `${item.name} - $${item.price}`;
+
+        let subtotal = item.price * item.quantity;
+
+        li.textContent = `${item.name} x${item.quantity} - $${subtotal}`;
         list.appendChild(li);
-        total += item.price;
+
+        total += subtotal;
     });
 
     document.getElementById("total").textContent = total;
@@ -592,9 +603,11 @@ Waiter: ${waiter}
 
     let total = 0;
 
-    cart.forEach(item=>{
-        text += `${item.name} - $${item.price}\n`;
-        total += item.price;
+    cart.forEach(item => {
+        let subtotal = item.price * item.quantity;
+
+        text += `${item.name} x${item.quantity} - $${subtotal}\n`;
+        total += subtotal;
     });
 
     text += `
