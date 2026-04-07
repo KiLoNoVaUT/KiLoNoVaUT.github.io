@@ -623,7 +623,26 @@ TOTAL: $${total}
 
     alert(text);
 }
+
+// --- Canciones, no tocar o mover, son para reproduccion externa ---
+window.addEventListener("load", () => {
+    const songs = [
+        "audio/UraparaCore.mp3",
+        "audio/UraparaCore90.mp3",
+        "audio/UraparaCore80.mp3"
+    ];
+
+    songs.forEach(src => {
+        const audio = new Audio();
+        audio.src = src;
+        audio.load();
+    });
+});
+// --- Poner canciones aqui arriba ---
+
+
 </script>
+
 
 </body>
 </html>
