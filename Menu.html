@@ -6,7 +6,17 @@
 <title>The Burger Shack</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="preload" as="audio" href="audio/UraparaCore.mp3">
 
+<audio id="music">
+  <source src="audio/UraparaCore.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+window.addEventListener("load", () => {
+    document.getElementById("music").load();
+});
+</script>
 <style>
 body {
     margin: 0;
@@ -297,10 +307,6 @@ TOTAL: $${total}
 
     alert(text);
 }
-window.addEventListener("load", () => {
-    const audio = document.getElementById("music");
-    audio.load(); // 🔥 fuerza la descarga
-});
 </script>
 
 </body>
