@@ -297,6 +297,10 @@ TOTAL: $${total}
 
     alert(text);
 }
+window.addEventListener("load", () => {
+    const audio = document.getElementById("music");
+    audio.load(); // 🔥 fuerza la descarga
+});
 </script>
 
 </body>
